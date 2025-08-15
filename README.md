@@ -1,2 +1,3 @@
-# C14
-Trabalhos e atividades de engenharia de software
+# C14 - Atividades Engenharia de Software
+
+Projeto de exemplo usando Poetry e pandas para leitura de CSV.
