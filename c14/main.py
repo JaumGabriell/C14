@@ -2,4 +2,4 @@ import pandas as pd
 
 db = pd.read_csv('data.csv')
 
-print(db.iloc[:, 0])
+print(db)
