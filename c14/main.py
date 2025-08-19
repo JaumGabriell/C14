@@ -6,4 +6,4 @@ print("Mostra as duas últimas linhas:")
 print(db.tail(2))
 
 print("Tabela toda")
-print(d)
+print(db)
