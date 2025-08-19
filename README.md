@@ -27,6 +27,6 @@ Para ativar o ambiente virtual do Poetry:
 ```powershell
 poetry shell
 ```
-## Para resolver o conflito:
+## Para resolver o conflito de merge:
 Utilizamos a ferramente merge editor do vs code.
 
