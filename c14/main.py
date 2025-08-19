@@ -2,4 +2,5 @@ import pandas as pd
 
 db = pd.read_csv('data.csv')
 
-print(db)
+print("amostra aleatória:")
+print(db.sample())
