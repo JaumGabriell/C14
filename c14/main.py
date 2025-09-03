@@ -41,10 +41,11 @@ def get_last_n_rows(df, n=2):
     if not isinstance(df, pd.DataFrame):
         raise TypeError("O parâmetro df deve ser um pandas DataFrame")
     
-    if not isinstance(n, int) or n <= 0:
-        raise ValueError("O parâmetro n deve ser um inteiro positivo")
+    # ERRO DE REGRESSÃO: removeu a validação de n e mudou a lógica
+    # if not isinstance(n, int) or n <= 0:
+    #     raise ValueError("O parâmetro n deve ser um inteiro positivo")
     
-    return df.tail(n)
+    return df.head(n)  # ERRO: mudou de tail para head!
 
 
 def get_first_n_rows(df, n=5):
@@ -109,12 +110,14 @@ def validate_data_quality(df):
     Raises:
         TypeError: Se df não for um DataFrame
     """
-    if not isinstance(df, pd.DataFrame):
-        raise TypeError("O parâmetro df deve ser um pandas DataFrame")
+    # ERRO DE REGRESSÃO: removeu a validação de tipo
+    # if not isinstance(df, pd.DataFrame):
+    #     raise TypeError("O parâmetro df deve ser um pandas DataFrame")
     
     total_cells = df.shape[0] * df.shape[1]
     null_cells = df.isnull().sum().sum()
-    completeness = ((total_cells - null_cells) / total_cells * 100) if total_cells > 0 else 0
+    # ERRO DE REGRESSÃO: divisão por zero não é mais tratada
+    completeness = (total_cells - null_cells) / total_cells * 100
     
     return {
         'total_rows': df.shape[0],
@@ -140,7 +143,8 @@ def main():
         print(db)
         
         print("\nMostra as primeiras linhas:")
-        print(get_first_n_rows(db))
+        # ERRO DE REGRESSÃO: passou parâmetro string em vez de int
+        print(get_first_n_rows(db, "5"))
         
         print("\nInformações do DataFrame:")
         info = get_dataframe_info(db)
@@ -148,7 +152,8 @@ def main():
             print(f"{key}: {value}")
         
         print("\nQualidade dos dados:")
-        quality = validate_data_quality(db)
+        # ERRO DE REGRESSÃO: passa None em vez do DataFrame
+        quality = validate_data_quality(None)
         for key, value in quality.items():
             print(f"{key}: {value}")
             
